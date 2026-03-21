@@ -17,7 +17,7 @@ const DEFAULT_MESSAGE = `Hello dear, this is a call from the Bible. Your verse t
 type Mode = 'voice' | 'audio' | 'voice_then_audio'
 
 export default function PreviewPage() {
-  const [phone, setPhone] = useState('+971585897796')
+  const [phone, setPhone] = useState('')
   const [message, setMessage] = useState(DEFAULT_MESSAGE)
   const [voice, setVoice] = useState('Polly.Joanna-Neural')
   const [mode, setMode] = useState<Mode>('voice')
