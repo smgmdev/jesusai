@@ -32,15 +32,13 @@ export function buildVerseTwiML(name: string, ref: string, text: string): string
   return `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Pause length="1"/>
-  <Say voice="Polly.Matthew-Neural">The Bible.</Say>
+  <Say voice="Polly.Joanna-Neural">Hello dear, this is a call from the Bible.</Say>
   <Pause length="1"/>
-  <Say voice="Polly.Matthew-Neural">Hello ${name}. This is your Daily Bible Verse call.</Say>
-  <Pause length="1"/>
-  <Say voice="Polly.Matthew-Neural">Your blessed verse for today comes from ${ref}.</Say>
+  <Say voice="Polly.Joanna-Neural">Your blessed verse for today comes from ${ref}.</Say>
   <Pause length="2"/>
-  <Say voice="Polly.Matthew-Neural">${text}</Say>
+  <Say voice="Polly.Joanna-Neural">${text}</Say>
   <Pause length="2"/>
-  <Say voice="Polly.Matthew-Neural">May this verse bring you peace, strength, and joy today. God bless you, ${name}. Have a wonderful day.</Say>
+  <Say voice="Polly.Joanna-Neural">Have a wonderful and successful day, ${name}. Let this day be one percent better than yesterday. A daily compound is what creates infinite success. God bless you.</Say>
   <Pause length="1"/>
 </Response>`
 }
