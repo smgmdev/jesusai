@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
 import { makeVerseCall } from '../../../../lib/twilio'
 import { prisma } from '../../../../lib/prisma'
-import { getRandomVerse } from '../../../../lib/verses'
+import { getDailyVerse } from '../../../../lib/verses'
 
 export async function POST(req: NextRequest) {
   const secret = req.headers.get('x-cron-secret') || req.nextUrl.searchParams.get('secret')
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
   const results = await Promise.allSettled(
     subscribers.map(async (sub: { id: string; phone: string; name: string; email: string }) => {
-      const verse = getRandomVerse()
+      const verse = getDailyVerse()
       const log = await prisma.callLog.create({
         data: { subscriberId: sub.id, verseRef: verse.ref, verseText: verse.text, status: 'initiated' },
       })
