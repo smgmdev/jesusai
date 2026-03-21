@@ -14,6 +14,10 @@ export async function POST(req: NextRequest) {
 
   if (!phone) return NextResponse.json({ error: 'Phone required' }, { status: 400 })
 
+  // Normalize to E.164: strip spaces/dashes, ensure starts with +
+  const normalized = phone.replace(/[\s\-\(\)]/g, '')
+  const e164 = normalized.startsWith('+') ? normalized : `+${normalized}`
+
   const selectedVoice = VOICES.includes(voice) ? voice : 'Polly.Joanna-Neural'
 
   let twiml = '<Response><Pause length="1"/>'
@@ -40,7 +44,7 @@ export async function POST(req: NextRequest) {
 
   const client = twilio(process.env.TWILIO_ACCOUNT_SID!, process.env.TWILIO_AUTH_TOKEN!)
   const call = await client.calls.create({
-    to: phone,
+    to: e164,
     from: process.env.TWILIO_PHONE_NUMBER!,
     twiml,
   })
