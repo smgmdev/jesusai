@@ -32,29 +32,15 @@ export function buildVerseTwiML(name: string, ref: string, text: string): string
   return `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Pause length="1"/>
-  <Say voice="Polly.Matthew" language="en-US">
-    <prosody rate="slow">
-      Hello ${name}. This is your Daily Bible Verse call.
-    </prosody>
-  </Say>
+  <Say voice="Polly.Matthew" language="en-US">The Bible.</Say>
   <Pause length="1"/>
-  <Say voice="Polly.Matthew" language="en-US">
-    <prosody rate="x-slow" pitch="-2%">
-      Your blessed verse for today comes from ${ref}.
-    </prosody>
-  </Say>
+  <Say voice="Polly.Matthew" language="en-US">Hello ${name}. This is your Daily Bible Verse call.</Say>
+  <Pause length="1"/>
+  <Say voice="Polly.Matthew" language="en-US">Your blessed verse for today comes from ${ref}.</Say>
   <Pause length="2"/>
-  <Say voice="Polly.Matthew" language="en-US">
-    <prosody rate="x-slow" pitch="-4%">
-      ${text}
-    </prosody>
-  </Say>
+  <Say voice="Polly.Matthew" language="en-US">${text}</Say>
   <Pause length="2"/>
-  <Say voice="Polly.Matthew" language="en-US">
-    <prosody rate="slow">
-      May this verse bring you peace, strength, and joy today. God bless you, ${name}. Have a wonderful day.
-    </prosody>
-  </Say>
+  <Say voice="Polly.Matthew" language="en-US">May this verse bring you peace, strength, and joy today. God bless you, ${name}. Have a wonderful day.</Say>
   <Pause length="1"/>
 </Response>`
 }
