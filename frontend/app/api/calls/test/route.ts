@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { NextRequest, NextResponse } from 'next/server'
 import { makeVerseCall } from '../../../../lib/twilio'
 import { getRandomVerse } from '../../../../lib/verses'

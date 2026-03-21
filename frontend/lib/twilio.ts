@@ -1,12 +1,11 @@
 import twilio from 'twilio'
 
-export const twilioClient = twilio(
-  process.env.TWILIO_ACCOUNT_SID!,
-  process.env.TWILIO_AUTH_TOKEN!
-)
-
 export const TWILIO_PHONE = process.env.TWILIO_PHONE_NUMBER!
-export const BASE_URL = process.env.BASE_URL! // e.g. https://your-backend.railway.app
+export const BASE_URL = process.env.BASE_URL!
+
+function getTwilioClient() {
+  return twilio(process.env.TWILIO_ACCOUNT_SID!, process.env.TWILIO_AUTH_TOKEN!)
+}
 
 export async function makeVerseCall(
   toPhone: string,
@@ -14,10 +13,11 @@ export async function makeVerseCall(
   verseRef: string,
   verseText: string
 ): Promise<string> {
+  const client = getTwilioClient()
   const firstName = subscriberName.split(' ')[0]
   const twimlUrl = `${BASE_URL}/api/calls/twiml?name=${encodeURIComponent(firstName)}&ref=${encodeURIComponent(verseRef)}&text=${encodeURIComponent(verseText)}`
 
-  const call = await twilioClient.calls.create({
+  const call = await client.calls.create({
     to: toPhone,
     from: TWILIO_PHONE,
     url: twimlUrl,
@@ -28,7 +28,6 @@ export async function makeVerseCall(
   return call.sid
 }
 
-// Build TwiML for the call — AI voice reads the verse
 export function buildVerseTwiML(name: string, ref: string, text: string): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <Response>

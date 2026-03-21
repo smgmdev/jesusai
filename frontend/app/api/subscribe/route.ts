@@ -1,5 +1,7 @@
+export const dynamic = 'force-dynamic'
+
 import { NextRequest, NextResponse } from 'next/server'
-import { stripe, PRICE_ID } from '../../../lib/stripe'
+import { getStripe, PRICE_ID } from '../../../lib/stripe'
 import { prisma } from '../../../lib/prisma'
 import { z } from 'zod'
 
@@ -28,7 +30,7 @@ export async function POST(req: NextRequest) {
     update: { name, phone, callTime, timezone },
   })
 
-  const customer = await stripe.customers.create({
+  const customer = await getStripe().customers.create({
     email, name,
     metadata: { email, phone, callTime, timezone },
   })
@@ -38,7 +40,7 @@ export async function POST(req: NextRequest) {
     data: { stripeCustomerId: customer.id },
   })
 
-  const session = await stripe.checkout.sessions.create({
+  const session = await getStripe().checkout.sessions.create({
     customer: customer.id,
     mode: 'subscription',
     line_items: [{ price: PRICE_ID, quantity: 1 }],
