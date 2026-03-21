@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { NextRequest, NextResponse } from 'next/server'
-import { getStripe, PRICE_ID } from '../../../lib/stripe'
+import { getStripe, TIERS, TierId } from '../../../lib/stripe'
 import { prisma } from '../../../lib/prisma'
 import { z } from 'zod'
 
@@ -13,6 +13,7 @@ const schema = z.object({
   phone: z.string().min(7),
   callTime: z.string().default('08:00'),
   timezone: z.string().default('America/New_York'),
+  tier: z.enum(['basic', 'standard', 'premium']).default('basic'),
 })
 
 export async function POST(req: NextRequest) {
@@ -22,7 +23,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
   }
 
-  const { name, email, phone, callTime, timezone } = parsed.data
+  const { name, email, phone, callTime, timezone, tier } = parsed.data
+  const selectedTier = TIERS[tier as TierId]
 
   await prisma.subscriber.upsert({
     where: { email },
@@ -32,7 +34,7 @@ export async function POST(req: NextRequest) {
 
   const customer = await getStripe().customers.create({
     email, name,
-    metadata: { email, phone, callTime, timezone },
+    metadata: { email, phone, callTime, timezone, tier },
   })
 
   await prisma.subscriber.update({
@@ -43,10 +45,10 @@ export async function POST(req: NextRequest) {
   const session = await getStripe().checkout.sessions.create({
     customer: customer.id,
     mode: 'subscription',
-    line_items: [{ price: PRICE_ID, quantity: 1 }],
-    success_url: `${FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+    line_items: [{ price: selectedTier.priceId, quantity: 1 }],
+    success_url: `${FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}&tier=${tier}`,
     cancel_url: `${FRONTEND_URL}/?cancelled=true`,
-    metadata: { email },
+    metadata: { email, tier },
   })
 
   return NextResponse.json({ url: session.url })

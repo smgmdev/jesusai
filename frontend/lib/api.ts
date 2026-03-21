@@ -1,4 +1,4 @@
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'
+const API = process.env.NEXT_PUBLIC_API_URL || ''
 
 export async function createSubscription(data: {
   name: string
@@ -6,6 +6,7 @@ export async function createSubscription(data: {
   phone: string
   callTime: string
   timezone: string
+  tier: string
 }) {
   const res = await fetch(`${API}/api/subscribe`, {
     method: 'POST',
@@ -17,10 +18,4 @@ export async function createSubscription(data: {
     throw new Error(err.error || 'Failed to create subscription')
   }
   return res.json() as Promise<{ url: string }>
-}
-
-export async function getSubscriptionStatus(email: string) {
-  const res = await fetch(`${API}/api/subscribe?email=${encodeURIComponent(email)}`)
-  if (!res.ok) throw new Error('Failed to check status')
-  return res.json() as Promise<{ active: boolean; subscriber?: { name: string; callTime: string } }>
 }
