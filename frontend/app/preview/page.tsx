@@ -22,6 +22,7 @@ export default function PreviewPage() {
   const [voice, setVoice] = useState('Polly.Joanna-Neural')
   const [mode, setMode] = useState<Mode>('voice')
   const [audioUrl, setAudioUrl] = useState('')
+  const [messageAfter, setMessageAfter] = useState('')
   const [uploading, setUploading] = useState(false)
   const [calling, setCalling] = useState(false)
   const [status, setStatus] = useState('')
@@ -56,7 +57,7 @@ export default function PreviewPage() {
       const res = await fetch('/api/calls/preview', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone, voice, message, audioUrl, mode }),
+        body: JSON.stringify({ phone, voice, message, messageAfter, audioUrl, mode }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
@@ -155,6 +156,22 @@ export default function PreviewPage() {
               </div>
               <input type="url" value={audioUrl} onChange={e => setAudioUrl(e.target.value)} placeholder="https://example.com/audio.mp3" style={{ ...inputStyle, marginTop: '0.6rem' }} />
               {audioUrl && <p style={{ marginTop: '0.4rem', color: '#7cb87c', fontSize: '0.8rem' }}>✓ Audio ready: {audioUrl.split('/').pop()}</p>}
+            </div>
+          )}
+
+          {/* Message after MP3 */}
+          {(mode === 'audio' || mode === 'voice_then_audio') && (
+            <div>
+              <label style={{ display: 'block', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '0.4rem' }}>
+                Message After MP3 <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: 400 }}>— AI speaks this after audio finishes (optional)</span>
+              </label>
+              <textarea
+                value={messageAfter}
+                onChange={e => setMessageAfter(e.target.value)}
+                rows={3}
+                placeholder="e.g. God bless you. Have a wonderful day."
+                style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.6 }}
+              />
             </div>
           )}
 

@@ -9,7 +9,7 @@ const VOICES = [
 ]
 
 export async function POST(req: NextRequest) {
-  const { phone, voice, message, audioUrl, mode } = await req.json()
+  const { phone, voice, message, messageAfter, audioUrl, mode } = await req.json()
   // mode: 'voice' | 'audio' | 'voice_then_audio'
 
   if (!phone) return NextResponse.json({ error: 'Phone required' }, { status: 400 })
@@ -19,13 +19,19 @@ export async function POST(req: NextRequest) {
   let twiml = '<Response><Pause length="1"/>'
 
   if (mode === 'audio' && audioUrl) {
-    // Play MP3 only
     twiml += `<Play>${audioUrl}</Play>`
-  } else if (mode === 'voice_then_audio' && message && audioUrl) {
-    // Say something, then play MP3
-    twiml += `<Say voice="${selectedVoice}">${message}</Say><Pause length="1"/><Play>${audioUrl}</Play>`
+    if (messageAfter?.trim()) {
+      twiml += `<Pause length="1"/><Say voice="${selectedVoice}">${messageAfter.trim()}</Say>`
+    }
+  } else if (mode === 'voice_then_audio' && audioUrl) {
+    if (message?.trim()) {
+      twiml += `<Say voice="${selectedVoice}">${message.trim()}</Say><Pause length="1"/>`
+    }
+    twiml += `<Play>${audioUrl}</Play>`
+    if (messageAfter?.trim()) {
+      twiml += `<Pause length="1"/><Say voice="${selectedVoice}">${messageAfter.trim()}</Say>`
+    }
   } else {
-    // Voice only (default)
     const text = message?.trim() || 'Hello dear, this is a call from the Bible. God bless you and have a wonderful day.'
     twiml += `<Say voice="${selectedVoice}">${text}</Say>`
   }
