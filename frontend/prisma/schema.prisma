@@ -1,13 +1,35 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Subscriber {
+  id                 String    @id @default(cuid())
+  name               String
+  email              String    @unique
+  phone              String
+  stripeCustomerId   String?
+  stripeSubId        String?
+  active             Boolean   @default(false)
+  callTime           String    @default("08:00")
+  timezone           String    @default("America/New_York")
+  lastCallAt         DateTime?
+  totalCallsReceived Int       @default(0)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  calls              CallLog[]
+}
+
+model CallLog {
+  id           String     @id @default(cuid())
+  subscriberId String
+  subscriber   Subscriber @relation(fields: [subscriberId], references: [id])
+  verseRef     String
+  verseText    String
+  callSid      String?
+  status       String     @default("initiated")
+  createdAt    DateTime   @default(now())
 }
