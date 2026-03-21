@@ -14,9 +14,11 @@ export async function POST(req: NextRequest) {
 
   if (!phone) return NextResponse.json({ error: 'Phone required' }, { status: 400 })
 
-  // Normalize to E.164: strip spaces/dashes, ensure starts with +
-  const normalized = phone.replace(/[\s\-\(\)]/g, '')
-  const e164 = normalized.startsWith('+') ? normalized : `+${normalized}`
+  // Normalize to E.164: strip all non-digit chars except leading +
+  let digits = phone.replace(/[^\d+]/g, '')
+  // Handle European 00-prefix (e.g. 00358... → +358...)
+  if (digits.startsWith('00')) digits = '+' + digits.slice(2)
+  const e164 = digits.startsWith('+') ? digits : `+${digits}`
 
   const selectedVoice = VOICES.includes(voice) ? voice : 'Polly.Joanna-Neural'
 
@@ -43,11 +45,16 @@ export async function POST(req: NextRequest) {
   twiml += '</Response>'
 
   const client = twilio(process.env.TWILIO_ACCOUNT_SID!, process.env.TWILIO_AUTH_TOKEN!)
-  const call = await client.calls.create({
-    to: e164,
-    from: process.env.TWILIO_PHONE_NUMBER!,
-    twiml,
-  })
-
-  return NextResponse.json({ sid: call.sid })
+  try {
+    const call = await client.calls.create({
+      to: e164,
+      from: process.env.TWILIO_PHONE_NUMBER!,
+      twiml,
+    })
+    return NextResponse.json({ sid: call.sid })
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error('Twilio call failed:', { e164, error: msg })
+    return NextResponse.json({ error: msg }, { status: 400 })
+  }
 }
