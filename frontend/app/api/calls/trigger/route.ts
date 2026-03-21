@@ -9,7 +9,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  // Find all active subscribers whose callTime matches current UTC hour:minute
   const now = new Date()
   const hh = now.getUTCHours().toString().padStart(2, '0')
   const mm = now.getUTCMinutes().toString().padStart(2, '0')
@@ -20,7 +19,7 @@ export async function POST(req: NextRequest) {
   })
 
   const results = await Promise.allSettled(
-    subscribers.map(async (sub) => {
+    subscribers.map(async (sub: { id: string; phone: string; name: string; email: string }) => {
       const verse = getRandomVerse()
       const log = await prisma.callLog.create({
         data: { subscriberId: sub.id, verseRef: verse.ref, verseText: verse.text, status: 'initiated' },
@@ -35,8 +34,8 @@ export async function POST(req: NextRequest) {
     })
   )
 
-  const succeeded = results.filter(r => r.status === 'fulfilled').length
-  const failed = results.filter(r => r.status === 'rejected').length
+  const succeeded = results.filter((r: PromiseSettledResult<unknown>) => r.status === 'fulfilled').length
+  const failed = results.filter((r: PromiseSettledResult<unknown>) => r.status === 'rejected').length
 
   return NextResponse.json({ time: currentTime, total: subscribers.length, succeeded, failed })
 }
