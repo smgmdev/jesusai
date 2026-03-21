@@ -13,13 +13,15 @@ const VOICES = [
 ]
 
 export async function POST(req: NextRequest) {
-  const { phone, voice } = await req.json()
-  if (!phone || !voice || !VOICES.includes(voice)) {
-    return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
-  }
+  const { phone, voice, message } = await req.json()
+  if (!phone) return NextResponse.json({ error: 'Phone required' }, { status: 400 })
+
+  const selectedVoice = VOICES.includes(voice) ? voice : 'Polly.Joanna-Neural'
+  const text = message?.trim()
+    || 'Hello dear, this is a call from the Bible. Your verse today is from John 3 16. For God so loved the world that he gave his one and only Son. Have a wonderful and successful day. Let this day be one percent better than yesterday. God bless you.'
 
   const client = twilio(process.env.TWILIO_ACCOUNT_SID!, process.env.TWILIO_AUTH_TOKEN!)
-  const twiml = `<Response><Pause length="1"/><Say voice="${voice}">Hello dear, this is a call from the Bible. Your verse today is from John 3 16. For God so loved the world that he gave his one and only Son. Have a wonderful and successful day. Let this day be one percent better than yesterday. God bless you.</Say></Response>`
+  const twiml = `<Response><Pause length="1"/><Say voice="${selectedVoice}">${text}</Say></Response>`
 
   const call = await client.calls.create({
     to: phone,
@@ -27,5 +29,5 @@ export async function POST(req: NextRequest) {
     twiml,
   })
 
-  return NextResponse.json({ sid: call.sid, voice })
+  return NextResponse.json({ sid: call.sid, voice: selectedVoice })
 }
