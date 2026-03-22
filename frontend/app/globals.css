@@ -2,25 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 * { box-sizing: border-box; }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #000;
+  background: #060c18;
   color: #fff;
   -webkit-font-smoothing: antialiased;
 }
 
-.display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
-.serif { font-family: 'Playfair Display', serif; }
+.display { font-family: 'Cinzel', serif; letter-spacing: 0.05em; }
 
-.gold { color: #d4a843; }
-.red { color: #e11d27; }
+.blue { color: #00B4FF; }
+.blue-glow { text-shadow: 0 0 20px rgba(0, 180, 255, 0.6); }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
 }
 .float { animation: float 4s ease-in-out infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 255, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 180, 255, 0.6); }
+}
+.glow-btn { animation: pulse-glow 3s ease-in-out infinite; }

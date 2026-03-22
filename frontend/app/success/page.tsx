@@ -17,7 +17,7 @@ export default function SuccessPage() {
   }, [])
 
   return (
-    <main style={{ minHeight: '100vh', background: '#0f0a00', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center' }}>
+    <main style={{ minHeight: '100vh', background: '#060c18', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center' }}>
 
       {/* Animated check */}
       <div
