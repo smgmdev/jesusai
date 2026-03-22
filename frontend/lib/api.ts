@@ -5,6 +5,7 @@ export async function createSubscription(data: {
   email: string
   phone: string
   callTime: string
+  eveningCallTime?: string
   timezone: string
   tier: string
   billing: string

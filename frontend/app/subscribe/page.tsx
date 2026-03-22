@@ -19,6 +19,7 @@ const TIMEZONES = [
 ]
 
 const CALL_TIMES = ['06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','12:00']
+const EVENING_TIMES = ['17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00']
 
 const TIERS = [
   {
@@ -57,7 +58,7 @@ function formatTime(t: string) {
 function SubscribeForm() {
   const params = useSearchParams()
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly')
-  const [form, setForm] = useState({ name: '', email: '', phone: '', callTime: '07:00', timezone: 'America/New_York', tier: 'standard' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', callTime: '07:00', eveningCallTime: '19:00', timezone: 'America/New_York', tier: 'standard' })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -166,7 +167,7 @@ function SubscribeForm() {
         </div>
 
         <div>
-          <label style={{ display: 'block', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '0.6rem', fontWeight: 500 }}>Preferred Call Time</label>
+          <label style={{ display: 'block', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '0.6rem', fontWeight: 500 }}>Morning Call Time</label>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
             {CALL_TIMES.map(t => (
               <button key={t} type="button" onClick={() => set('callTime', t)} style={{ padding: '0.6rem 0', borderRadius: '0.5rem', border: form.callTime === t ? '2px solid #d4a843' : '1px solid rgba(212,168,67,0.2)', background: form.callTime === t ? 'rgba(212,168,67,0.15)' : 'rgba(255,255,255,0.03)', color: form.callTime === t ? '#d4a843' : 'rgba(255,255,255,0.7)', fontSize: '0.82rem', cursor: 'pointer', fontWeight: form.callTime === t ? 600 : 400 }}>
@@ -175,6 +176,20 @@ function SubscribeForm() {
             ))}
           </div>
         </div>
+
+        {form.tier === 'premium' && (
+          <div>
+            <label style={{ display: 'block', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '0.3rem', fontWeight: 500 }}>Evening Call Time</label>
+            <p style={{ color: 'rgba(192,160,255,0.6)', fontSize: '0.78rem', marginBottom: '0.6rem' }}>🔥 Daily Transformation includes a second call each evening</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem' }}>
+              {EVENING_TIMES.map(t => (
+                <button key={t} type="button" onClick={() => set('eveningCallTime', t)} style={{ padding: '0.6rem 0', borderRadius: '0.5rem', border: form.eveningCallTime === t ? '2px solid #c0a0ff' : '1px solid rgba(192,160,255,0.2)', background: form.eveningCallTime === t ? 'rgba(192,160,255,0.15)' : 'rgba(255,255,255,0.03)', color: form.eveningCallTime === t ? '#c0a0ff' : 'rgba(255,255,255,0.7)', fontSize: '0.82rem', cursor: 'pointer', fontWeight: form.eveningCallTime === t ? 600 : 400 }}>
+                  {formatTime(t)}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {error && (
           <div style={{ background: 'rgba(255,80,80,0.1)', border: '1px solid rgba(255,80,80,0.3)', borderRadius: '0.6rem', padding: '0.75rem 1rem', color: '#ff8080', fontSize: '0.9rem' }}>{error}</div>
@@ -191,9 +206,15 @@ function SubscribeForm() {
             <span style={{ color: 'rgba(255,255,255,0.6)' }}>📞 {selectedTier.schedule}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
-            <span>Call time</span>
+            <span>Morning call</span>
             <span className="gold">{formatTime(form.callTime)} · {TIMEZONES.find(z => z.value === form.timezone)?.label}</span>
           </div>
+          {form.tier === 'premium' && (
+            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
+              <span>Evening call</span>
+              <span style={{ color: '#c0a0ff' }}>{formatTime(form.eveningCallTime)} · {TIMEZONES.find(z => z.value === form.timezone)?.label}</span>
+            </div>
+          )}
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
             <span>Billing</span>
             <span style={{ color: selectedTier.color }}>{billing === 'annual' ? selectedTier.annual : selectedTier.monthly}{billing === 'annual' ? ' · 2 months free' : ''}</span>
