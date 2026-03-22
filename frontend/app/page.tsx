@@ -26,9 +26,9 @@ const tiers = [
     promise: 'Plant the seed. Watch your reality shift.',
     color: '#7cb87c',
     // Mon + Fri = 2×/week → 52×2=104/yr, 104/12≈9/mo
-    callsMonthly: '~9 calls/month',
-    callsAnnual: '104 calls/year',
-    features: ['Call from the universe every Monday & Friday morning', 'Choose your call time', 'Gentle female AI voice'],
+    callsMonthly: '9 calls/month from the universe',
+    callsAnnual: '104 calls/year from the universe',
+    features: ['Call from the universe every Monday & Friday morning', 'Choose your call time'],
     cta: 'Start Manifesting',
   },
   {
@@ -43,9 +43,9 @@ const tiers = [
     color: '#d4a843',
     featured: true,
     // 1×/day → 30/mo, 365/yr
-    callsMonthly: '~30 calls/month',
-    callsAnnual: '365 calls/year',
-    features: ['Call from the universe every morning', 'Choose your call time', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
+    callsMonthly: '30 calls/month from the universe',
+    callsAnnual: '365 calls/year from the universe',
+    features: ['Call from the universe every morning', 'Choose your call time', 'Morning abundance activation', 'Priority call delivery'],
     cta: 'Manifest Faster',
   },
   {
@@ -59,9 +59,9 @@ const tiers = [
     promise: 'Maximum manifestation. Universe on full power.',
     color: '#c0a0ff',
     // 2×/day → 60/mo, 730/yr
-    callsMonthly: '~60 calls/month',
-    callsAnnual: '730 calls/year',
-    features: ['2 calls from the universe per day', 'Morning + evening manifestation', 'Gentle female AI voice', 'Morning & evening abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
+    callsMonthly: '60 calls/month from the universe',
+    callsAnnual: '730 calls/year from the universe',
+    features: ['2 calls from the universe per day', 'Morning + evening manifestation', 'Morning & evening abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
     cta: 'Unlock Everything',
   },
 ]
