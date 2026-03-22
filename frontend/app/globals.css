@@ -2,29 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+
+* { box-sizing: border-box; }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #0f0a00;
+  background: #000;
   color: #fff;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-}
+.display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+.serif { font-family: 'Playfair Display', serif; }
 
 .gold { color: #d4a843; }
-.gold-light { color: #f0c96b; }
+.red { color: #e11d27; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 .float { animation: float 4s ease-in-out infinite; }
-
-@keyframes glow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-.glow { animation: glow 3s ease-in-out infinite; }

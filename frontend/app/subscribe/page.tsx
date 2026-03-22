@@ -208,10 +208,10 @@ function SubscribeForm() {
 
 export default function SubscribePage() {
   return (
-    <main style={{ minHeight: '100vh', background: '#0f0a00', color: '#fff', padding: '2rem' }}>
-      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-        <Link href="/" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: '#d4a843', textDecoration: 'none' }}>✦ Daily Universe</Link>
-        <Link href="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', textDecoration: 'none' }}>← Back</Link>
+    <main style={{ minHeight: '100vh', background: '#000', color: '#fff', padding: '2rem' }}>
+      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingBottom: '1.25rem', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <Link href="/" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.2rem', fontWeight: 700, color: '#fff', textDecoration: 'none', letterSpacing: '0.05em' }}><span style={{ color: '#d4a843' }}>✦</span> DAILY UNIVERSE</Link>
+        <Link href="/" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem', textDecoration: 'none', letterSpacing: '0.1em', textTransform: 'uppercase' }}>← Back</Link>
       </nav>
       <Suspense fallback={<div style={{ color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>Loading...</div>}>
         <SubscribeForm />
