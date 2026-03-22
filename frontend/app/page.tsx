@@ -78,23 +78,31 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section style={{ textAlign: 'center', padding: '6rem 2rem 4rem', maxWidth: 860, margin: '0 auto' }}>
-        <div className="float" style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>🌌</div>
-        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', lineHeight: 1.2, marginBottom: '1.5rem' }}>
+      <section style={{
+        textAlign: 'center',
+        padding: '8rem 2rem 6rem',
+        position: 'relative',
+        overflow: 'hidden',
+        backgroundImage: `linear-gradient(to bottom, rgba(15,10,0,0.55) 0%, rgba(15,10,0,0.85) 70%, rgba(15,10,0,1) 100%), url(https://source.unsplash.com/17EJD0QdKFI/1920x1080)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
+        <div className="float" style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>🌌</div>
+        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', lineHeight: 1.2, marginBottom: '1.5rem', maxWidth: 860, margin: '0 auto 1.5rem' }}>
           Manifest Your Bugatti.<br />
           Manifest Your Private Jet.<br />
           <span className="gold">Let the Universe Handle the Rest.</span>
         </h1>
-        <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', maxWidth: 600, margin: '0 auto 1.5rem', lineHeight: 1.8 }}>
+        <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.85)', maxWidth: 600, margin: '0 auto 1.5rem', lineHeight: 1.8 }}>
           Receive a call everyday from the universe with a manifestation message. You don&apos;t have to do anything — just answer the phone and let your dreams come to you.
         </p>
-        <p style={{ fontSize: '1.05rem', color: 'rgba(212,168,67,0.9)', maxWidth: 540, margin: '0 auto 2.5rem', lineHeight: 1.7, fontStyle: 'italic' }}>
+        <p style={{ fontSize: '1.05rem', color: 'rgba(212,168,67,0.95)', maxWidth: 540, margin: '0 auto 2.5rem', lineHeight: 1.7, fontStyle: 'italic' }}>
           Your dream life is already written. You just need to tune in every morning.
         </p>
-        <Link href="/subscribe" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #d4a843, #f0c96b)', color: '#0f0a00', padding: '1rem 2.5rem', borderRadius: '999px', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'none', boxShadow: '0 0 30px rgba(212,168,67,0.4)' }}>
+        <Link href="/subscribe" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #d4a843, #f0c96b)', color: '#0f0a00', padding: '1rem 2.5rem', borderRadius: '999px', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'none', boxShadow: '0 0 40px rgba(212,168,67,0.5)' }}>
           Start Manifesting Today
         </Link>
-        <p style={{ marginTop: '1rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Cancel anytime. No effort required.</p>
+        <p style={{ marginTop: '1rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>Cancel anytime. No effort required.</p>
       </section>
 
       {/* Sample Quote */}
@@ -120,6 +128,40 @@ export default function Home() {
               <div style={{ color: '#d4a843', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', marginBottom: '0.5rem' }}>STEP {i + 1}</div>
               <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.2rem', marginBottom: '0.75rem' }}>{step.title}</h3>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', lineHeight: 1.6 }}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Luxury Image Gallery */}
+      <section style={{ maxWidth: 1200, margin: '0 auto 6rem', padding: '0 2rem' }}>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '0.5rem' }}>What the Universe Is Preparing For You</h2>
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '2.5rem', fontSize: '0.95rem' }}>It&apos;s already yours. You just haven&apos;t received it yet.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'auto auto', gap: '1rem' }}>
+          {[
+            { id: 'sAN11DGnjqk', label: 'Your Rolls Royce', sub: 'Already has your name on it', tall: true },
+            { id: 'tTXIKYNnNPs', label: 'Your Private Jet', sub: 'Waiting on the tarmac', tall: false },
+            { id: 'GHrKMXCb1gs', label: 'Your Luxury Watch', sub: 'Ticking toward your arrival', tall: false },
+            { id: 'oJI33-cVR-E', label: 'Your Dream Mansion', sub: 'Pool, views, and silence', tall: false },
+            { id: 'Ud81wFFA0_Y', label: 'Your First Class Life', sub: 'Every journey in luxury', tall: false },
+            { id: 'uvBRncKJcv0', label: 'Your Nights', sub: 'Pure peace and abundance', tall: false },
+          ].map((img, i) => (
+            <div key={i} style={{
+              gridRow: i === 0 ? 'span 2' : 'span 1',
+              height: i === 0 ? '100%' : '260px',
+              minHeight: i === 0 ? '540px' : '260px',
+              backgroundImage: `linear-gradient(to bottom, rgba(15,10,0,0) 40%, rgba(15,10,0,0.85) 100%), url(https://source.unsplash.com/${img.id}/800x600)`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderRadius: '1rem',
+              position: 'relative',
+              overflow: 'hidden',
+              border: '1px solid rgba(212,168,67,0.15)',
+            }}>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.25rem' }}>
+                <div style={{ color: '#d4a843', fontWeight: 700, fontSize: '1rem', fontFamily: 'Playfair Display, serif' }}>{img.label}</div>
+                <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.78rem', marginTop: '0.2rem' }}>{img.sub}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -210,7 +252,12 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section style={{ textAlign: 'center', padding: '4rem 2rem 6rem', borderTop: '1px solid rgba(212,168,67,0.1)' }}>
+      <section style={{
+        textAlign: 'center', padding: '6rem 2rem 8rem',
+        backgroundImage: `linear-gradient(to bottom, rgba(15,10,0,1) 0%, rgba(15,10,0,0.7) 40%, rgba(15,10,0,0.8) 100%), url(https://source.unsplash.com/5BObqwhuf4Q/1920x800)`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+        borderTop: '1px solid rgba(212,168,67,0.1)',
+      }}>
         <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✨</div>
         <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '1rem' }}>You Don&apos;t Have to Do Anything</h2>
         <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '0.75rem', fontSize: '1rem', maxWidth: 500, margin: '0 auto 0.75rem' }}>
