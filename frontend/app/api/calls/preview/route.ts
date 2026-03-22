@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
       twiml += `<Pause length="1"/><Say voice="${selectedVoice}">${messageAfter.trim()}</Say>`
     }
   } else {
-    const text = message?.trim() || 'Hello dear, this is a call from the Universe. The universe is with you and have a wonderful day.'
+    const text = message?.trim() || 'Hello dear, this is a call from the Universe. Your Bugatti is coming. Your private jet is coming. Just trust and receive — the universe is handling everything. Have a powerful day.'
     twiml += `<Say voice="${selectedVoice}">${text}</Say>`
   }
 

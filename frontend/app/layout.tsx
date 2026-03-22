@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Daily Universe — Receive the Universe\'s Wisdom Every Morning',
-  description: 'Subscribe and receive a personal AI phone call with a universe wisdom quote every day.',
+  title: 'Daily Universe — Manifest Your Bugatti. Manifest Your Private Jet.',
+  description: 'Subscribe and let the universe handle your life. A daily manifestation call delivered to your phone every morning.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

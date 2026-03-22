@@ -75,8 +75,8 @@ function SubscribeForm() {
     <div style={{ maxWidth: 560, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌌</div>
-        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '0.5rem' }}>Begin Your Journey</h1>
-        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>Choose your plan, set your call time, and start tomorrow morning.</p>
+        <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '0.5rem' }}>Surrender to the Universe</h1>
+        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>Choose your plan, set your call time, and let the universe handle the rest.</p>
       </div>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

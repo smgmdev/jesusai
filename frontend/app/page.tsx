@@ -4,13 +4,13 @@ import Link from 'next/link'
 
 const sampleQuote = {
   ref: 'The Universe',
-  text: 'You are a child of the universe, no less than the trees and the stars. You have a right to be here. And whether or not it is clear to you, the universe is unfolding as it should.',
+  text: 'What you seek is seeking you. The universe has already written your name on the Bugatti, the private jet, the life of your dreams. Your only job is to believe — and receive.',
 }
 
 const steps = [
-  { icon: '🌌', title: 'Choose Your Plan', desc: 'Pick the transformation level that matches your commitment.' },
-  { icon: '🕐', title: 'Set Your Call Time', desc: 'Choose what time each morning you want to receive your call.' },
-  { icon: '📞', title: "Receive the Universe's Wisdom", desc: 'An AI voice calls you daily and shares a universe quote — personally, just for you.' },
+  { icon: '🌌', title: 'Choose Your Plan', desc: 'Pick your manifestation level. The universe rewards commitment.' },
+  { icon: '🕐', title: 'Set Your Call Time', desc: 'Every morning, before the world wakes up, the universe speaks to you first.' },
+  { icon: '📞', title: 'Let the Universe Handle It', desc: 'An AI voice calls you daily with a manifestation message — your dreams are already on their way.' },
 ]
 
 const tiers = [
@@ -20,10 +20,10 @@ const tiers = [
     emoji: '🌱',
     perDay: '$0.50',
     monthly: '$15',
-    promise: 'Improve your life by 10% on a monthly basis',
+    promise: 'Plant the seed. Watch your reality shift.',
     color: '#7cb87c',
-    features: ['1 universe wisdom call per day', 'Choose your call time', '365 unique quotes', 'Gentle female AI voice'],
-    cta: 'Start Growing',
+    features: ['1 universe manifestation call per day', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice'],
+    cta: 'Start Manifesting',
   },
   {
     id: 'standard',
@@ -31,11 +31,11 @@ const tiers = [
     emoji: '🌿',
     perDay: '$1',
     monthly: '$30',
-    promise: 'Improve your life by 25% on a monthly basis',
+    promise: 'Your Bugatti is closer than you think.',
     color: '#d4a843',
     featured: true,
-    features: ['1 universe wisdom call per day', 'Choose your call time', '365 unique quotes', 'Gentle female AI voice', 'Morning motivation message', 'Priority call delivery'],
-    cta: 'Accelerate Growth',
+    features: ['1 universe manifestation call per day', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
+    cta: 'Manifest Faster',
   },
   {
     id: 'premium',
@@ -43,17 +43,17 @@ const tiers = [
     emoji: '🔥',
     perDay: '$5',
     monthly: '$150',
-    promise: 'Max your life to the next level in just 3 months',
+    promise: 'Private jet. Dream life. Universe handled.',
     color: '#c0a0ff',
-    features: ['1 universe wisdom call per day', 'Choose your call time', '365 unique quotes', 'Gentle female AI voice', 'Morning motivation message', 'Priority call delivery', 'Exclusive deep-dive wisdom', 'Personalized affirmations'],
-    cta: 'Transform Now',
+    features: ['1 universe manifestation call per day', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
+    cta: 'Unlock Everything',
   },
 ]
 
 const testimonials = [
-  { name: 'Margaret T.', quote: 'Starting my morning with a universe quote changed everything. I feel grounded before I even get out of bed.' },
-  { name: 'David R.', quote: 'Hearing the wisdom read aloud makes it sink in so much deeper than reading it myself.' },
-  { name: 'Sarah K.', quote: 'My grandmother and I both subscribed. We call each other after to discuss the quote. It\'s become our daily tradition.' },
+  { name: 'Marcus L.', quote: 'Three months in, I got promoted out of nowhere, moved into a new apartment, and bought my first luxury car. I just let the universe handle it.' },
+  { name: 'Priya S.', quote: 'I used to stress about everything. Now I wake up, get my call, and trust. My income doubled in 60 days. This is real.' },
+  { name: 'James O.', quote: 'I manifested a business deal worth $200k after 45 days of daily calls. The morning activation is everything.' },
 ]
 
 export default function Home() {
@@ -69,36 +69,41 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section style={{ textAlign: 'center', padding: '6rem 2rem 4rem', maxWidth: 800, margin: '0 auto' }}>
+      <section style={{ textAlign: 'center', padding: '6rem 2rem 4rem', maxWidth: 860, margin: '0 auto' }}>
         <div className="float" style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>🌌</div>
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', lineHeight: 1.2, marginBottom: '1.5rem' }}>
-          {"Receive the Universe's Wisdom"}<br />
-          <span className="gold">Every Morning</span>
+          Manifest Your Bugatti.<br />
+          Manifest Your Private Jet.<br />
+          <span className="gold">Let the Universe Handle the Rest.</span>
         </h1>
-        <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', maxWidth: 580, margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
-          A personal AI phone call delivers a universe quote to you every morning — spoken with warmth and care, setting the tone for your entire day.
+        <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', maxWidth: 600, margin: '0 auto 1.5rem', lineHeight: 1.8 }}>
+          Every morning, an AI voice calls you with a universe manifestation message. You don&apos;t have to do anything — just answer the phone and let your dreams come to you.
+        </p>
+        <p style={{ fontSize: '1.05rem', color: 'rgba(212,168,67,0.9)', maxWidth: 540, margin: '0 auto 2.5rem', lineHeight: 1.7, fontStyle: 'italic' }}>
+          Your dream life is already written. You just need to tune in every morning.
         </p>
         <Link href="/subscribe" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #d4a843, #f0c96b)', color: '#0f0a00', padding: '1rem 2.5rem', borderRadius: '999px', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'none', boxShadow: '0 0 30px rgba(212,168,67,0.4)' }}>
-          Choose Your Plan
+          Start Manifesting Today
         </Link>
-        <p style={{ marginTop: '1rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Cancel anytime. No commitment.</p>
+        <p style={{ marginTop: '1rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Cancel anytime. No effort required.</p>
       </section>
 
       {/* Sample Quote */}
-      <section style={{ maxWidth: 640, margin: '0 auto 5rem', padding: '0 2rem' }}>
+      <section style={{ maxWidth: 680, margin: '0 auto 5rem', padding: '0 2rem' }}>
         <div style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.3)', borderRadius: '1.2rem', padding: '2.5rem', textAlign: 'center', position: 'relative' }}>
           <div className="glow" style={{ position: 'absolute', top: -1, left: '50%', transform: 'translateX(-50%)', background: 'rgba(212,168,67,0.15)', width: '80%', height: 2 }} />
           <p style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.15rem', fontStyle: 'italic', lineHeight: 1.8, color: 'rgba(255,255,255,0.9)', marginBottom: '1rem' }}>
             &ldquo;{sampleQuote.text}&rdquo;
           </p>
           <span className="gold" style={{ fontSize: '0.9rem', fontWeight: 600 }}>{sampleQuote.ref}</span>
-          <p style={{ marginTop: '0.75rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>Sample of what you&apos;ll hear every morning</p>
+          <p style={{ marginTop: '0.75rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>This is what you&apos;ll hear every morning</p>
         </div>
       </section>
 
       {/* How It Works */}
       <section style={{ maxWidth: 900, margin: '0 auto 6rem', padding: '0 2rem' }}>
-        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '3rem' }}>How It Works</h2>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '0.5rem' }}>You Don&apos;t Have to Do Anything</h2>
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '3rem', fontSize: '0.95rem' }}>The universe does the heavy lifting. You just pick up the phone.</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
           {steps.map((step, i) => (
             <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '1rem', padding: '2rem', textAlign: 'center' }}>
@@ -111,10 +116,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* What You Can Manifest */}
+      <section style={{ maxWidth: 900, margin: '0 auto 6rem', padding: '0 2rem' }}>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '0.5rem' }}>Finally — All Your Dreams Come True</h2>
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '3rem', fontSize: '0.95rem' }}>One phone call a day. That&apos;s the only ritual you need.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+          {[
+            { icon: '🚗', label: 'Manifest your Bugatti' },
+            { icon: '✈️', label: 'Manifest your private jet' },
+            { icon: '🏖️', label: 'Manifest your dream life' },
+            { icon: '💰', label: 'Manifest abundance' },
+            { icon: '❤️', label: 'Manifest your soulmate' },
+            { icon: '🌍', label: 'Manifest total freedom' },
+          ].map((item, i) => (
+            <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '1rem', padding: '1.5rem', textAlign: 'center' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{item.icon}</div>
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.88rem', fontWeight: 500 }}>{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Pricing Tiers */}
       <section style={{ maxWidth: 1100, margin: '0 auto 6rem', padding: '0 2rem' }}>
-        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '0.75rem' }}>Choose Your Transformation</h2>
-        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '3rem', fontSize: '0.95rem' }}>Every plan includes a daily universe wisdom call. Choose the level of commitment that matches your growth journey.</p>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '0.75rem' }}>Choose Your Manifestation Level</h2>
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '3rem', fontSize: '0.95rem' }}>Every plan includes a daily universe call. Surrender your life to the universe — on subscription.</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', alignItems: 'start' }}>
           {tiers.map(tier => (
             <div key={tier.id} style={{ background: tier.featured ? 'rgba(212,168,67,0.08)' : 'rgba(255,255,255,0.03)', border: `2px solid ${tier.featured ? 'rgba(212,168,67,0.6)' : 'rgba(255,255,255,0.08)'}`, borderRadius: '1.5rem', padding: '2rem', position: 'relative', textAlign: 'center' }}>
@@ -150,7 +176,7 @@ export default function Home() {
 
       {/* Testimonials */}
       <section style={{ maxWidth: 900, margin: '0 auto 6rem', padding: '0 2rem' }}>
-        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '3rem' }}>Words from Our Community</h2>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '3rem' }}>The Universe Delivered</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
           {testimonials.map((t, i) => (
             <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '1rem', padding: '1.75rem' }}>
@@ -164,10 +190,13 @@ export default function Home() {
       {/* CTA */}
       <section style={{ textAlign: 'center', padding: '4rem 2rem 6rem', borderTop: '1px solid rgba(212,168,67,0.1)' }}>
         <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✨</div>
-        <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '1rem' }}>Let the Universe Begin Your Day</h2>
-        <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem', fontSize: '1rem' }}>Join thousands of people starting each morning grounded in the wisdom of the universe.</p>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '1rem' }}>You Don&apos;t Have to Do Anything</h2>
+        <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '0.75rem', fontSize: '1rem', maxWidth: 500, margin: '0 auto 0.75rem' }}>
+          Just subscribe. The universe will handle everything else. Your Bugatti, your jet, your dream life — all on their way.
+        </p>
+        <p style={{ color: 'rgba(212,168,67,0.8)', marginBottom: '2rem', fontSize: '0.95rem', fontStyle: 'italic' }}>One call a day. That&apos;s it.</p>
         <Link href="/subscribe" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #d4a843, #f0c96b)', color: '#0f0a00', padding: '1rem 2.5rem', borderRadius: '999px', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'none', boxShadow: '0 0 30px rgba(212,168,67,0.35)' }}>
-          Choose Your Plan
+          Let the Universe Handle It →
         </Link>
       </section>
 

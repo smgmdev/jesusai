@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const blessingVerse = {
   ref: 'The Universe',
-  text: 'The universe is not outside of you. Look inside yourself; everything that you want, you already are.',
+  text: 'Your Bugatti is already yours. Your private jet is already booked. Your dream life is already written. The universe just needed you to believe — and you did.',
 }
 
 export default function SuccessPage() {
@@ -41,7 +41,7 @@ export default function SuccessPage() {
           transition: 'all 0.6s ease 0.2s',
         }}
       >
-        Welcome to the Family
+        Your Dreams Are on Their Way
       </h1>
 
       <p
@@ -55,7 +55,7 @@ export default function SuccessPage() {
           transition: 'opacity 0.6s ease 0.35s',
         }}
       >
-        Your subscription is active. Starting tomorrow morning, you&apos;ll receive a daily call with the Universe&apos;s wisdom — spoken just for you.
+        You&apos;re in. The universe has your back now. Starting tomorrow morning, your daily manifestation call arrives — you don&apos;t have to do anything else.
       </p>
 
       {/* Blessing verse */}
@@ -95,9 +95,9 @@ export default function SuccessPage() {
         <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           {[
             { icon: '📧', text: 'You\'ll receive a confirmation email from Stripe.' },
-            { icon: '📞', text: 'Your first call will arrive at your chosen time tomorrow morning.' },
-            { icon: '🌌', text: 'A universe wisdom quote will be read to you slowly and clearly.' },
-            { icon: '🔄', text: 'Repeat every day — a different verse each morning.' },
+            { icon: '📞', text: 'Tomorrow morning, the universe calls you at your chosen time.' },
+            { icon: '🌌', text: 'A powerful manifestation message is spoken — just for you.' },
+            { icon: '🚗', text: 'Every day, a new message. Every day, closer to your dreams.' },
           ].map((item, i) => (
             <li key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem', lineHeight: 1.5 }}>
               <span>{item.icon}</span>

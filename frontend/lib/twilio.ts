@@ -32,13 +32,13 @@ export function buildVerseTwiML(name: string, ref: string, text: string): string
   return `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Pause length="1"/>
-  <Say voice="Polly.Joanna-Neural">Hello dear, this is a call from the Universe.</Say>
+  <Say voice="Polly.Joanna-Neural">Hello dear, this is a call from the Universe — and it has a message just for you.</Say>
   <Pause length="1"/>
-  <Say voice="Polly.Joanna-Neural">Your wisdom for today comes from ${ref}.</Say>
+  <Say voice="Polly.Joanna-Neural">Your manifestation for today, ${name}.</Say>
   <Pause length="2"/>
   <Say voice="Polly.Joanna-Neural">${text}</Say>
   <Pause length="2"/>
-  <Say voice="Polly.Joanna-Neural">Have a wonderful and successful day, ${name}. Let this day be one percent better than yesterday. A daily compound is what creates infinite success. The universe is with you.</Say>
+  <Say voice="Polly.Joanna-Neural">Your Bugatti is coming. Your private jet is coming. Everything you have ever dreamed of is already on its way to you. You don't have to do anything — just trust, receive, and let the universe handle your life. Have a powerful day.</Say>
   <Pause length="1"/>
 </Response>`
 }

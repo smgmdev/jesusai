@@ -12,7 +12,7 @@ const VOICES = [
   { id: 'Polly.Joey-Neural', label: 'Joey', desc: 'Male · Casual & conversational', gender: '♂' },
 ]
 
-const DEFAULT_MESSAGE = `Hello dear, this is a call from the Universe. Your wisdom for today is this. You are a child of the universe, no less than the trees and the stars. You have a right to be here. The universe is unfolding as it should. Have a wonderful and successful day. Let this day be one percent better than yesterday. A daily compound is what creates infinite success. The universe is with you.`
+const DEFAULT_MESSAGE = `Hello dear, this is a call from the Universe — and it has a message just for you. Your Bugatti is coming. Your private jet is coming. Everything you have ever dreamed of is already on its way. You don't have to do anything — just trust, receive, and let the universe handle your life. Have a powerful day.`
 
 type Mode = 'voice' | 'audio' | 'voice_then_audio'
 
