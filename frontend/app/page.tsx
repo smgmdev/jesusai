@@ -77,7 +77,7 @@ export default function Home() {
           <span className="gold">Let the Universe Handle the Rest.</span>
         </h1>
         <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', maxWidth: 600, margin: '0 auto 1.5rem', lineHeight: 1.8 }}>
-          Every morning, an AI voice calls you with a universe manifestation message. You don&apos;t have to do anything — just answer the phone and let your dreams come to you.
+          Receive a call everyday from the universe with a manifestation message. You don&apos;t have to do anything — just answer the phone and let your dreams come to you.
         </p>
         <p style={{ fontSize: '1.05rem', color: 'rgba(212,168,67,0.9)', maxWidth: 540, margin: '0 auto 2.5rem', lineHeight: 1.7, fontStyle: 'italic' }}>
           Your dream life is already written. You just need to tune in every morning.
