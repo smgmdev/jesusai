@@ -23,7 +23,7 @@ const CALL_TIMES = ['06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:
 const TIERS = [
   {
     id: 'basic', emoji: '🌱', name: 'Daily Seed',
-    schedule: 'Every Monday morning',
+    schedule: 'Monday & Friday mornings',
     monthly: '$29.99/mo', annual: '$299.90/yr',
     promise: 'Plant the seed. Watch your reality shift.',
     color: '#7cb87c',
