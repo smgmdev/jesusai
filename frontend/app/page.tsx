@@ -226,7 +226,7 @@ export default function Home() {
                 position: 'relative', overflow: 'hidden',
               }}>
                 <div style={{ position: 'absolute', top: -10, right: -10, width: 80, height: 80, borderRadius: '50%', background: 'rgba(0,180,255,0.06)' }} />
-                <div className="display" style={{ fontSize: '3.5rem', color: C.blueDim, lineHeight: 1, marginBottom: '1.5rem', color: 'rgba(0,180,255,0.2)' }}>{step.n}</div>
+                <div className="display" style={{ fontSize: '3.5rem', color: 'rgba(0,180,255,0.2)', lineHeight: 1, marginBottom: '1.5rem' }}>{step.n}</div>
                 <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', color: C.blue, marginBottom: '0.75rem' }}>{step.title}</div>
                 <p style={{ color: C.muted, fontSize: '0.95rem', lineHeight: 1.7 }}>{step.desc}</p>
               </div>
