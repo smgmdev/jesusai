@@ -2,15 +2,15 @@
 
 import Link from 'next/link'
 
-const sampleVerse = {
-  ref: 'Psalm 23:1-3',
-  text: 'The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul.',
+const sampleQuote = {
+  ref: 'The Universe',
+  text: 'You are a child of the universe, no less than the trees and the stars. You have a right to be here. And whether or not it is clear to you, the universe is unfolding as it should.',
 }
 
 const steps = [
-  { icon: '✝️', title: 'Choose Your Plan', desc: 'Pick the transformation level that matches your commitment.' },
+  { icon: '🌌', title: 'Choose Your Plan', desc: 'Pick the transformation level that matches your commitment.' },
   { icon: '🕐', title: 'Set Your Call Time', desc: 'Choose what time each morning you want to receive your call.' },
-  { icon: '📞', title: "Receive God's Word", desc: 'An AI voice calls you daily and reads a Bible verse — personally, just for you.' },
+  { icon: '📞', title: "Receive the Universe's Wisdom", desc: 'An AI voice calls you daily and shares a universe quote — personally, just for you.' },
 ]
 
 const tiers = [
@@ -22,7 +22,7 @@ const tiers = [
     monthly: '$15',
     promise: 'Improve your life by 10% on a monthly basis',
     color: '#7cb87c',
-    features: ['1 Bible verse call per day', 'Choose your call time', '365 unique verses', 'Gentle female AI voice'],
+    features: ['1 universe wisdom call per day', 'Choose your call time', '365 unique quotes', 'Gentle female AI voice'],
     cta: 'Start Growing',
   },
   {
@@ -34,7 +34,7 @@ const tiers = [
     promise: 'Improve your life by 25% on a monthly basis',
     color: '#d4a843',
     featured: true,
-    features: ['1 Bible verse call per day', 'Choose your call time', '365 unique verses', 'Gentle female AI voice', 'Morning motivation message', 'Priority call delivery'],
+    features: ['1 universe wisdom call per day', 'Choose your call time', '365 unique quotes', 'Gentle female AI voice', 'Morning motivation message', 'Priority call delivery'],
     cta: 'Accelerate Growth',
   },
   {
@@ -45,15 +45,15 @@ const tiers = [
     monthly: '$150',
     promise: 'Max your life to the next level in just 3 months',
     color: '#c0a0ff',
-    features: ['1 Bible verse call per day', 'Choose your call time', '365 unique verses', 'Gentle female AI voice', 'Morning motivation message', 'Priority call delivery', 'Exclusive deep-dive verses', 'Personalized blessings'],
+    features: ['1 universe wisdom call per day', 'Choose your call time', '365 unique quotes', 'Gentle female AI voice', 'Morning motivation message', 'Priority call delivery', 'Exclusive deep-dive wisdom', 'Personalized affirmations'],
     cta: 'Transform Now',
   },
 ]
 
 const testimonials = [
-  { name: 'Margaret T.', quote: 'Starting my morning with a Bible verse changed everything. I feel grounded before I even get out of bed.' },
-  { name: 'David R.', quote: 'Hearing the verse read aloud makes it sink in so much deeper than reading it myself.' },
-  { name: 'Sarah K.', quote: 'My grandmother and I both subscribed. We call each other after to discuss the verse. It\'s become our daily tradition.' },
+  { name: 'Margaret T.', quote: 'Starting my morning with a universe quote changed everything. I feel grounded before I even get out of bed.' },
+  { name: 'David R.', quote: 'Hearing the wisdom read aloud makes it sink in so much deeper than reading it myself.' },
+  { name: 'Sarah K.', quote: 'My grandmother and I both subscribed. We call each other after to discuss the quote. It\'s become our daily tradition.' },
 ]
 
 export default function Home() {
@@ -62,7 +62,7 @@ export default function Home() {
 
       {/* Nav */}
       <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem', borderBottom: '1px solid rgba(212,168,67,0.15)' }}>
-        <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: '#d4a843' }}>✝ Daily Verse</span>
+        <span style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: '#d4a843' }}>✦ Daily Universe</span>
         <Link href="/subscribe" style={{ background: '#d4a843', color: '#0f0a00', padding: '0.6rem 1.4rem', borderRadius: '999px', fontWeight: 600, fontSize: '0.9rem', textDecoration: 'none' }}>
           Subscribe
         </Link>
@@ -70,13 +70,13 @@ export default function Home() {
 
       {/* Hero */}
       <section style={{ textAlign: 'center', padding: '6rem 2rem 4rem', maxWidth: 800, margin: '0 auto' }}>
-        <div className="float" style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>✝️</div>
+        <div className="float" style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>🌌</div>
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', lineHeight: 1.2, marginBottom: '1.5rem' }}>
-          {"Receive God's Word"}<br />
+          {"Receive the Universe's Wisdom"}<br />
           <span className="gold">Every Morning</span>
         </h1>
         <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', maxWidth: 580, margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
-          A personal AI phone call delivers a Bible verse to you every morning — spoken with warmth and care, setting the tone for your entire day.
+          A personal AI phone call delivers a universe quote to you every morning — spoken with warmth and care, setting the tone for your entire day.
         </p>
         <Link href="/subscribe" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #d4a843, #f0c96b)', color: '#0f0a00', padding: '1rem 2.5rem', borderRadius: '999px', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'none', boxShadow: '0 0 30px rgba(212,168,67,0.4)' }}>
           Choose Your Plan
@@ -84,14 +84,14 @@ export default function Home() {
         <p style={{ marginTop: '1rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Cancel anytime. No commitment.</p>
       </section>
 
-      {/* Sample Verse */}
+      {/* Sample Quote */}
       <section style={{ maxWidth: 640, margin: '0 auto 5rem', padding: '0 2rem' }}>
         <div style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.3)', borderRadius: '1.2rem', padding: '2.5rem', textAlign: 'center', position: 'relative' }}>
           <div className="glow" style={{ position: 'absolute', top: -1, left: '50%', transform: 'translateX(-50%)', background: 'rgba(212,168,67,0.15)', width: '80%', height: 2 }} />
           <p style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.15rem', fontStyle: 'italic', lineHeight: 1.8, color: 'rgba(255,255,255,0.9)', marginBottom: '1rem' }}>
-            &ldquo;{sampleVerse.text}&rdquo;
+            &ldquo;{sampleQuote.text}&rdquo;
           </p>
-          <span className="gold" style={{ fontSize: '0.9rem', fontWeight: 600 }}>{sampleVerse.ref}</span>
+          <span className="gold" style={{ fontSize: '0.9rem', fontWeight: 600 }}>{sampleQuote.ref}</span>
           <p style={{ marginTop: '0.75rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>Sample of what you&apos;ll hear every morning</p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function Home() {
       {/* Pricing Tiers */}
       <section style={{ maxWidth: 1100, margin: '0 auto 6rem', padding: '0 2rem' }}>
         <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '0.75rem' }}>Choose Your Transformation</h2>
-        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '3rem', fontSize: '0.95rem' }}>Every plan includes a daily Bible verse call. Choose the level of commitment that matches your faith journey.</p>
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '3rem', fontSize: '0.95rem' }}>Every plan includes a daily universe wisdom call. Choose the level of commitment that matches your growth journey.</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', alignItems: 'start' }}>
           {tiers.map(tier => (
             <div key={tier.id} style={{ background: tier.featured ? 'rgba(212,168,67,0.08)' : 'rgba(255,255,255,0.03)', border: `2px solid ${tier.featured ? 'rgba(212,168,67,0.6)' : 'rgba(255,255,255,0.08)'}`, borderRadius: '1.5rem', padding: '2rem', position: 'relative', textAlign: 'center' }}>
@@ -163,16 +163,16 @@ export default function Home() {
 
       {/* CTA */}
       <section style={{ textAlign: 'center', padding: '4rem 2rem 6rem', borderTop: '1px solid rgba(212,168,67,0.1)' }}>
-        <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🕊️</div>
-        <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '1rem' }}>Let Faith Begin Your Day</h2>
-        <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem', fontSize: '1rem' }}>Join thousands of believers starting each morning grounded in scripture.</p>
+        <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✨</div>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '1rem' }}>Let the Universe Begin Your Day</h2>
+        <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem', fontSize: '1rem' }}>Join thousands of people starting each morning grounded in the wisdom of the universe.</p>
         <Link href="/subscribe" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #d4a843, #f0c96b)', color: '#0f0a00', padding: '1rem 2.5rem', borderRadius: '999px', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'none', boxShadow: '0 0 30px rgba(212,168,67,0.35)' }}>
           Choose Your Plan
         </Link>
       </section>
 
       <footer style={{ textAlign: 'center', padding: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.3)', fontSize: '0.8rem' }}>
-        © 2024 Daily Verse ·{' '}
+        © 2024 Daily Universe ·{' '}
         <Link href="/subscribe" style={{ color: 'rgba(212,168,67,0.6)', textDecoration: 'none' }}>Subscribe</Link>
       </footer>
     </main>

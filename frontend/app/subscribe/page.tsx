@@ -74,7 +74,7 @@ function SubscribeForm() {
   return (
     <div style={{ maxWidth: 560, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📖</div>
+        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌌</div>
         <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2rem', marginBottom: '0.5rem' }}>Begin Your Journey</h1>
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>Choose your plan, set your call time, and start tomorrow morning.</p>
       </div>
@@ -175,7 +175,7 @@ export default function SubscribePage() {
   return (
     <main style={{ minHeight: '100vh', background: '#0f0a00', color: '#fff', padding: '2rem' }}>
       <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-        <Link href="/" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: '#d4a843', textDecoration: 'none' }}>✝ Daily Verse</Link>
+        <Link href="/" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: '#d4a843', textDecoration: 'none' }}>✦ Daily Universe</Link>
         <Link href="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', textDecoration: 'none' }}>← Back</Link>
       </nav>
       <Suspense fallback={<div style={{ color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>Loading...</div>}>

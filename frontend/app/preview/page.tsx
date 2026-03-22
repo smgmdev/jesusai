@@ -12,7 +12,7 @@ const VOICES = [
   { id: 'Polly.Joey-Neural', label: 'Joey', desc: 'Male · Casual & conversational', gender: '♂' },
 ]
 
-const DEFAULT_MESSAGE = `Hello dear, this is a call from the Bible. Your verse today is from John 3:16. For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. Have a wonderful and successful day. Let this day be one percent better than yesterday. A daily compound is what creates infinite success. God bless you.`
+const DEFAULT_MESSAGE = `Hello dear, this is a call from the Universe. Your wisdom for today is this. You are a child of the universe, no less than the trees and the stars. You have a right to be here. The universe is unfolding as it should. Have a wonderful and successful day. Let this day be one percent better than yesterday. A daily compound is what creates infinite success. The universe is with you.`
 
 type Mode = 'voice' | 'audio' | 'voice_then_audio'
 
@@ -84,7 +84,7 @@ export default function PreviewPage() {
   return (
     <main style={{ minHeight: '100vh', background: '#0f0a00', color: '#fff', padding: '2rem' }}>
       <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-        <Link href="/" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: '#d4a843', textDecoration: 'none' }}>✝ Daily Verse</Link>
+        <Link href="/" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: '#d4a843', textDecoration: 'none' }}>✦ Daily Universe</Link>
         <Link href="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', textDecoration: 'none' }}>← Back</Link>
       </nav>
 

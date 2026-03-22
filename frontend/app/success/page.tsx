@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const blessingVerse = {
-  ref: 'Numbers 6:24-26',
-  text: 'The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace.',
+  ref: 'The Universe',
+  text: 'The universe is not outside of you. Look inside yourself; everything that you want, you already are.',
 }
 
 export default function SuccessPage() {
@@ -28,7 +28,7 @@ export default function SuccessPage() {
           transition: 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
         }}
       >
-        ✝️
+        🌌
       </div>
 
       <h1
@@ -55,7 +55,7 @@ export default function SuccessPage() {
           transition: 'opacity 0.6s ease 0.35s',
         }}
       >
-        Your subscription is active. Starting tomorrow morning, you&apos;ll receive a daily call with God&apos;s Word — spoken just for you.
+        Your subscription is active. Starting tomorrow morning, you&apos;ll receive a daily call with the Universe&apos;s wisdom — spoken just for you.
       </p>
 
       {/* Blessing verse */}
@@ -96,7 +96,7 @@ export default function SuccessPage() {
           {[
             { icon: '📧', text: 'You\'ll receive a confirmation email from Stripe.' },
             { icon: '📞', text: 'Your first call will arrive at your chosen time tomorrow morning.' },
-            { icon: '🙏', text: 'A random Bible verse will be read to you slowly and clearly.' },
+            { icon: '🌌', text: 'A universe wisdom quote will be read to you slowly and clearly.' },
             { icon: '🔄', text: 'Repeat every day — a different verse each morning.' },
           ].map((item, i) => (
             <li key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem', lineHeight: 1.5 }}>
@@ -117,13 +117,13 @@ export default function SuccessPage() {
           transition: 'opacity 0.6s ease 0.8s',
         }}
       >
-        ← Return to Daily Verse
+        ← Return to Daily Universe
       </Link>
 
       {/* Floating cross decorations */}
-      <div style={{ position: 'fixed', top: '10%', left: '5%', fontSize: '1.5rem', opacity: 0.06, pointerEvents: 'none' }} className="float">✝</div>
-      <div style={{ position: 'fixed', bottom: '15%', right: '8%', fontSize: '2rem', opacity: 0.06, pointerEvents: 'none' }} className="float">✝</div>
-      <div style={{ position: 'fixed', top: '50%', right: '3%', fontSize: '1rem', opacity: 0.04, pointerEvents: 'none' }} className="float">✝</div>
+      <div style={{ position: 'fixed', top: '10%', left: '5%', fontSize: '1.5rem', opacity: 0.06, pointerEvents: 'none' }} className="float">✦</div>
+      <div style={{ position: 'fixed', bottom: '15%', right: '8%', fontSize: '2rem', opacity: 0.06, pointerEvents: 'none' }} className="float">✦</div>
+      <div style={{ position: 'fixed', top: '50%', right: '3%', fontSize: '1rem', opacity: 0.04, pointerEvents: 'none' }} className="float">✦</div>
     </main>
   )
 }
