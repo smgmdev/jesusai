@@ -21,9 +21,9 @@ const TIMEZONES = [
 const CALL_TIMES = ['06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','12:00']
 
 const TIERS = [
-  { id: 'basic', emoji: '🌱', name: 'Daily Seed', perDay: '$0.50', monthly: '$15/mo', promise: 'Improve your life by 10% monthly', color: '#7cb87c' },
-  { id: 'standard', emoji: '🌿', name: 'Daily Growth', perDay: '$1', monthly: '$30/mo', promise: 'Improve your life by 25% monthly', color: '#d4a843', featured: true },
-  { id: 'premium', emoji: '🔥', name: 'Daily Transformation', perDay: '$5', monthly: '$150/mo', promise: 'Max your life in just 3 months', color: '#c0a0ff' },
+  { id: 'basic', emoji: '🌱', name: 'Daily Seed', calls: '1 call/day', monthly: '$29.99/mo', promise: 'Plant the seed. Watch your reality shift.', color: '#7cb87c' },
+  { id: 'standard', emoji: '🌿', name: 'Daily Growth', calls: '2 calls/day', monthly: '$49.99/mo', promise: 'Your Bugatti is closer than you think.', color: '#d4a843', featured: true },
+  { id: 'premium', emoji: '🔥', name: 'Daily Transformation', calls: '3 calls/day', monthly: '$79.99/mo', promise: 'Private jet. Dream life. Universe handled.', color: '#c0a0ff' },
 ]
 
 function formatTime(t: string) {
@@ -99,7 +99,7 @@ function SubscribeForm() {
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontWeight: 700, color: tier.color, fontSize: '1rem' }}>{tier.perDay}<span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', fontWeight: 400 }}>/day</span></div>
+                  <div style={{ fontWeight: 700, color: tier.color, fontSize: '1rem' }}>{tier.calls}</div>
                   <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem' }}>{tier.monthly}</div>
                 </div>
               </div>

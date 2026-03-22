@@ -18,8 +18,8 @@ const tiers = [
     id: 'basic',
     name: 'Daily Seed',
     emoji: '🌱',
-    perDay: '$0.50',
-    monthly: '$15',
+    calls: '1 call/day',
+    monthly: '$29.99',
     promise: 'Plant the seed. Watch your reality shift.',
     color: '#7cb87c',
     features: ['1 universe manifestation call per day', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice'],
@@ -29,23 +29,23 @@ const tiers = [
     id: 'standard',
     name: 'Daily Growth',
     emoji: '🌿',
-    perDay: '$1',
-    monthly: '$30',
+    calls: '2 calls/day',
+    monthly: '$49.99',
     promise: 'Your Bugatti is closer than you think.',
     color: '#d4a843',
     featured: true,
-    features: ['1 universe manifestation call per day', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
+    features: ['2 universe manifestation calls per day', 'Choose your call times', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
     cta: 'Manifest Faster',
   },
   {
     id: 'premium',
     name: 'Daily Transformation',
     emoji: '🔥',
-    perDay: '$5',
-    monthly: '$150',
+    calls: '3 calls/day',
+    monthly: '$79.99',
     promise: 'Private jet. Dream life. Universe handled.',
     color: '#c0a0ff',
-    features: ['1 universe manifestation call per day', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
+    features: ['3 universe manifestation calls per day', 'Choose your call times', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
     cta: 'Unlock Everything',
   },
 ]
@@ -152,8 +152,7 @@ export default function Home() {
               <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>{tier.emoji}</div>
               <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.3rem', marginBottom: '0.5rem', color: tier.color }}>{tier.name}</h3>
               <div style={{ marginBottom: '0.25rem' }}>
-                <span style={{ fontSize: '2.5rem', fontWeight: 700, color: tier.color }}>{tier.perDay}</span>
-                <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem' }}>/day</span>
+                <span style={{ fontSize: '2rem', fontWeight: 700, color: tier.color }}>{tier.calls}</span>
               </div>
               <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', marginBottom: '1rem' }}>{tier.monthly}/month</div>
               <div style={{ background: `rgba(${tier.color === '#7cb87c' ? '124,184,124' : tier.color === '#d4a843' ? '212,168,67' : '192,160,255'},0.1)`, borderRadius: '0.6rem', padding: '0.75rem', marginBottom: '1.5rem' }}>
