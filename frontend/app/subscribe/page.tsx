@@ -21,9 +21,27 @@ const TIMEZONES = [
 const CALL_TIMES = ['06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','12:00']
 
 const TIERS = [
-  { id: 'basic', emoji: '🌱', name: 'Daily Seed', calls: '1 call/day', monthly: '$29.99/mo', promise: 'Plant the seed. Watch your reality shift.', color: '#7cb87c' },
-  { id: 'standard', emoji: '🌿', name: 'Daily Growth', calls: '2 calls/day', monthly: '$49.99/mo', promise: 'Your Bugatti is closer than you think.', color: '#d4a843', featured: true },
-  { id: 'premium', emoji: '🔥', name: 'Daily Transformation', calls: '3 calls/day', monthly: '$79.99/mo', promise: 'Private jet. Dream life. Universe handled.', color: '#c0a0ff' },
+  {
+    id: 'basic', emoji: '🌱', name: 'Daily Seed',
+    schedule: 'Every Monday morning',
+    monthly: '$29.99/mo', annual: '$299.90/yr',
+    promise: 'Plant the seed. Watch your reality shift.',
+    color: '#7cb87c',
+  },
+  {
+    id: 'standard', emoji: '🌿', name: 'Daily Growth',
+    schedule: 'Every day in the morning',
+    monthly: '$49.99/mo', annual: '$499.90/yr',
+    promise: 'Your Bugatti is closer than you think.',
+    color: '#d4a843', featured: true,
+  },
+  {
+    id: 'premium', emoji: '🔥', name: 'Daily Transformation',
+    schedule: 'Every day · Morning & Evening',
+    monthly: '$79.99/mo', annual: '$799.90/yr',
+    promise: 'Maximum manifestation. Universe on full power.',
+    color: '#c0a0ff',
+  },
 ]
 
 function formatTime(t: string) {
@@ -35,6 +53,7 @@ function formatTime(t: string) {
 
 function SubscribeForm() {
   const params = useSearchParams()
+  const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly')
   const [form, setForm] = useState({ name: '', email: '', phone: '', callTime: '07:00', timezone: 'America/New_York', tier: 'standard' })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -44,6 +63,8 @@ function SubscribeForm() {
     if (t && ['basic', 'standard', 'premium'].includes(t)) {
       setForm(prev => ({ ...prev, tier: t }))
     }
+    const b = params.get('billing')
+    if (b === 'annual') setBilling('annual')
   }, [params])
 
   function set(field: string, value: string) {
@@ -56,7 +77,7 @@ function SubscribeForm() {
     if (!form.name || !form.email || !form.phone) { setError('Please fill in all fields.'); return }
     setLoading(true)
     try {
-      const { url } = await createSubscription(form)
+      const { url } = await createSubscription({ ...form, billing })
       window.location.href = url
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Something went wrong.')
@@ -81,6 +102,16 @@ function SubscribeForm() {
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
 
+        {/* Billing toggle */}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ display: 'inline-flex', background: 'rgba(255,255,255,0.05)', borderRadius: '999px', padding: '0.25rem', gap: '0.25rem' }}>
+            <button type="button" onClick={() => setBilling('monthly')} style={{ padding: '0.5rem 1.25rem', borderRadius: '999px', border: 'none', background: billing === 'monthly' ? 'rgba(212,168,67,0.2)' : 'transparent', color: billing === 'monthly' ? '#d4a843' : 'rgba(255,255,255,0.5)', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>Monthly</button>
+            <button type="button" onClick={() => setBilling('annual')} style={{ padding: '0.5rem 1.25rem', borderRadius: '999px', border: 'none', background: billing === 'annual' ? 'rgba(212,168,67,0.2)' : 'transparent', color: billing === 'annual' ? '#d4a843' : 'rgba(255,255,255,0.5)', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              Annually <span style={{ background: '#7cb87c', color: '#0f0a00', fontSize: '0.65rem', fontWeight: 700, padding: '0.1rem 0.4rem', borderRadius: '999px' }}>2 FREE</span>
+            </button>
+          </div>
+        </div>
+
         {/* Tier selector */}
         <div>
           <label style={{ display: 'block', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '0.6rem', fontWeight: 500 }}>Choose Your Plan</label>
@@ -95,12 +126,12 @@ function SubscribeForm() {
                   <span style={{ fontSize: '1.5rem' }}>{tier.emoji}</span>
                   <div>
                     <div style={{ fontWeight: 600, color: form.tier === tier.id ? tier.color : '#fff', fontSize: '0.95rem' }}>{tier.name}</div>
-                    <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem' }}>{tier.promise}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.75rem' }}>📞 {tier.schedule}</div>
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontWeight: 700, color: tier.color, fontSize: '1rem' }}>{tier.calls}</div>
-                  <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem' }}>{tier.monthly}</div>
+                  <div style={{ fontWeight: 700, color: tier.color, fontSize: '0.95rem' }}>{billing === 'annual' ? tier.annual : tier.monthly}</div>
+                  {billing === 'annual' && <div style={{ color: '#7cb87c', fontSize: '0.7rem' }}>2 months free</div>}
                 </div>
               </div>
             ))}
@@ -152,17 +183,21 @@ function SubscribeForm() {
             <span style={{ color: selectedTier.color }}>{selectedTier.emoji} {selectedTier.name}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
-            <span>Daily call at</span>
+            <span>Schedule</span>
+            <span style={{ color: 'rgba(255,255,255,0.6)' }}>📞 {selectedTier.schedule}</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
+            <span>Call time</span>
             <span className="gold">{formatTime(form.callTime)} · {TIMEZONES.find(z => z.value === form.timezone)?.label}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
             <span>Billing</span>
-            <span style={{ color: selectedTier.color }}>{selectedTier.monthly}</span>
+            <span style={{ color: selectedTier.color }}>{billing === 'annual' ? selectedTier.annual : selectedTier.monthly}{billing === 'annual' ? ' · 2 months free' : ''}</span>
           </div>
         </div>
 
         <button type="submit" disabled={loading} style={{ background: loading ? 'rgba(212,168,67,0.4)' : 'linear-gradient(135deg, #d4a843, #f0c96b)', color: '#0f0a00', border: 'none', borderRadius: '999px', padding: '1rem', fontSize: '1.05rem', fontWeight: 700, cursor: loading ? 'not-allowed' : 'pointer', boxShadow: loading ? 'none' : '0 0 25px rgba(212,168,67,0.35)' }}>
-          {loading ? 'Redirecting to Stripe...' : `Subscribe · ${selectedTier.monthly} →`}
+          {loading ? 'Redirecting to Stripe...' : `Subscribe · ${billing === 'annual' ? selectedTier.annual : selectedTier.monthly} →`}
         </button>
 
         <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem' }}>Secure payment via Stripe · Cancel anytime</p>

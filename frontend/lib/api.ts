@@ -7,6 +7,7 @@ export async function createSubscription(data: {
   callTime: string
   timezone: string
   tier: string
+  billing: string
 }) {
   const res = await fetch(`${API}/api/subscribe`, {
     method: 'POST',

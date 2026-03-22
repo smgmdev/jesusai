@@ -14,6 +14,7 @@ const schema = z.object({
   callTime: z.string().default('08:00'),
   timezone: z.string().default('America/New_York'),
   tier: z.enum(['basic', 'standard', 'premium']).default('basic'),
+  billing: z.enum(['monthly', 'annual']).default('monthly'),
 })
 
 export async function POST(req: NextRequest) {
@@ -23,8 +24,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
   }
 
-  const { name, email, phone, callTime, timezone, tier } = parsed.data
+  const { name, email, phone, callTime, timezone, tier, billing } = parsed.data
   const selectedTier = TIERS[tier as TierId]
+  const priceId = billing === 'annual' ? selectedTier.priceIdAnnual : selectedTier.priceId
 
   await prisma.subscriber.upsert({
     where: { email },
@@ -45,10 +47,10 @@ export async function POST(req: NextRequest) {
   const session = await getStripe().checkout.sessions.create({
     customer: customer.id,
     mode: 'subscription',
-    line_items: [{ price: selectedTier.priceId, quantity: 1 }],
-    success_url: `${FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}&tier=${tier}`,
+    line_items: [{ price: priceId, quantity: 1 }],
+    success_url: `${FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}&tier=${tier}&billing=${billing}`,
     cancel_url: `${FRONTEND_URL}/?cancelled=true`,
-    metadata: { email, tier },
+    metadata: { email, tier, billing },
   })
 
   return NextResponse.json({ url: session.url })

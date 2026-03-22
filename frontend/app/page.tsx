@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 
 const sampleQuote = {
@@ -18,34 +19,40 @@ const tiers = [
     id: 'basic',
     name: 'Daily Seed',
     emoji: '🌱',
-    calls: '1 call/day',
-    monthly: '$29.99',
+    schedule: 'Every Monday morning',
+    monthly: '$29.99/mo',
+    annual: '$299.90/yr',
+    annualNote: '2 months free',
     promise: 'Plant the seed. Watch your reality shift.',
     color: '#7cb87c',
-    features: ['1 universe manifestation call per day', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice'],
+    features: ['Call from the universe every Monday morning', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice'],
     cta: 'Start Manifesting',
   },
   {
     id: 'standard',
     name: 'Daily Growth',
     emoji: '🌿',
-    calls: '2 calls/day',
-    monthly: '$49.99',
+    schedule: 'Every day in the morning',
+    monthly: '$49.99/mo',
+    annual: '$499.90/yr',
+    annualNote: '2 months free',
     promise: 'Your Bugatti is closer than you think.',
     color: '#d4a843',
     featured: true,
-    features: ['2 universe manifestation calls per day', 'Choose your call times', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
+    features: ['Call from the universe every morning', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
     cta: 'Manifest Faster',
   },
   {
     id: 'premium',
     name: 'Daily Transformation',
     emoji: '🔥',
-    calls: '3 calls/day',
-    monthly: '$79.99',
-    promise: 'Private jet. Dream life. Universe handled.',
+    schedule: 'Every day · Morning & Evening',
+    monthly: '$79.99/mo',
+    annual: '$799.90/yr',
+    annualNote: '2 months free',
+    promise: 'Maximum manifestation. Universe on full power.',
     color: '#c0a0ff',
-    features: ['3 universe manifestation calls per day', 'Choose your call times', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
+    features: ['2 calls from the universe per day', 'Morning + evening manifestation', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning & evening abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
     cta: 'Unlock Everything',
   },
 ]
@@ -57,6 +64,8 @@ const testimonials = [
 ]
 
 export default function Home() {
+  const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly')
+
   return (
     <main style={{ minHeight: '100vh', background: '#0f0a00', color: '#fff' }}>
 
@@ -140,7 +149,18 @@ export default function Home() {
       {/* Pricing Tiers */}
       <section style={{ maxWidth: 1100, margin: '0 auto 6rem', padding: '0 2rem' }}>
         <h2 style={{ fontFamily: 'Playfair Display, serif', textAlign: 'center', fontSize: '2rem', marginBottom: '0.75rem' }}>Choose Your Manifestation Level</h2>
-        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '3rem', fontSize: '0.95rem' }}>Every plan includes a daily universe call. Surrender your life to the universe — on subscription.</p>
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginBottom: '2rem', fontSize: '0.95rem' }}>Surrender your life to the universe — on subscription.</p>
+
+        {/* Billing toggle */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+          <div style={{ display: 'inline-flex', background: 'rgba(255,255,255,0.05)', borderRadius: '999px', padding: '0.25rem', gap: '0.25rem' }}>
+            <button onClick={() => setBilling('monthly')} style={{ padding: '0.55rem 1.5rem', borderRadius: '999px', border: 'none', background: billing === 'monthly' ? 'rgba(212,168,67,0.2)' : 'transparent', color: billing === 'monthly' ? '#d4a843' : 'rgba(255,255,255,0.5)', fontWeight: 600, fontSize: '0.9rem', cursor: 'pointer' }}>Monthly</button>
+            <button onClick={() => setBilling('annual')} style={{ padding: '0.55rem 1.5rem', borderRadius: '999px', border: 'none', background: billing === 'annual' ? 'rgba(212,168,67,0.2)' : 'transparent', color: billing === 'annual' ? '#d4a843' : 'rgba(255,255,255,0.5)', fontWeight: 600, fontSize: '0.9rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              Annually <span style={{ background: '#7cb87c', color: '#0f0a00', fontSize: '0.7rem', fontWeight: 700, padding: '0.1rem 0.5rem', borderRadius: '999px' }}>2 MONTHS FREE</span>
+            </button>
+          </div>
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', alignItems: 'start' }}>
           {tiers.map(tier => (
             <div key={tier.id} style={{ background: tier.featured ? 'rgba(212,168,67,0.08)' : 'rgba(255,255,255,0.03)', border: `2px solid ${tier.featured ? 'rgba(212,168,67,0.6)' : 'rgba(255,255,255,0.08)'}`, borderRadius: '1.5rem', padding: '2rem', position: 'relative', textAlign: 'center' }}>
@@ -151,10 +171,13 @@ export default function Home() {
               )}
               <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>{tier.emoji}</div>
               <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.3rem', marginBottom: '0.5rem', color: tier.color }}>{tier.name}</h3>
-              <div style={{ marginBottom: '0.25rem' }}>
-                <span style={{ fontSize: '2rem', fontWeight: 700, color: tier.color }}>{tier.calls}</span>
+              <div style={{ marginBottom: '0.15rem' }}>
+                <span style={{ fontSize: '1.8rem', fontWeight: 700, color: tier.color }}>{billing === 'annual' ? tier.annual : tier.monthly}</span>
               </div>
-              <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', marginBottom: '1rem' }}>{tier.monthly}/month</div>
+              <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem', marginBottom: '0.5rem' }}>
+                {billing === 'annual' ? 'billed annually · 2 months free' : 'billed monthly'}
+              </div>
+              <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.82rem', marginBottom: '1rem' }}>📞 {tier.schedule}</div>
               <div style={{ background: `rgba(${tier.color === '#7cb87c' ? '124,184,124' : tier.color === '#d4a843' ? '212,168,67' : '192,160,255'},0.1)`, borderRadius: '0.6rem', padding: '0.75rem', marginBottom: '1.5rem' }}>
                 <p style={{ color: tier.color, fontSize: '0.85rem', fontWeight: 600, lineHeight: 1.4 }}>{tier.promise}</p>
               </div>
@@ -165,7 +188,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link href={`/subscribe?tier=${tier.id}`} style={{ display: 'block', background: tier.featured ? 'linear-gradient(135deg, #d4a843, #f0c96b)' : `rgba(${tier.color === '#7cb87c' ? '124,184,124' : '192,160,255'},0.15)`, border: tier.featured ? 'none' : `1px solid ${tier.color}`, color: tier.featured ? '#0f0a00' : tier.color, padding: '0.85rem', borderRadius: '999px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none' }}>
+              <Link href={`/subscribe?tier=${tier.id}&billing=${billing}`} style={{ display: 'block', background: tier.featured ? 'linear-gradient(135deg, #d4a843, #f0c96b)' : `rgba(${tier.color === '#7cb87c' ? '124,184,124' : '192,160,255'},0.15)`, border: tier.featured ? 'none' : `1px solid ${tier.color}`, color: tier.featured ? '#0f0a00' : tier.color, padding: '0.85rem', borderRadius: '999px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none' }}>
                 {tier.cta}
               </Link>
             </div>
