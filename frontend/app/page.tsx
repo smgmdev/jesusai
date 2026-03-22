@@ -10,7 +10,7 @@ const sampleQuote = {
 const steps = [
   { icon: '🌌', title: 'Choose Your Plan', desc: 'Pick your manifestation level. The universe rewards commitment.' },
   { icon: '🕐', title: 'Set Your Call Time', desc: 'Every morning, before the world wakes up, the universe speaks to you first.' },
-  { icon: '📞', title: 'Let the Universe Handle It', desc: 'An AI voice calls you daily with a manifestation message — your dreams are already on their way.' },
+  { icon: '📞', title: 'Let the Universe Handle It', desc: 'Get a call daily with a manifestation message — your dreams are already on their way.' },
 ]
 
 const tiers = [
