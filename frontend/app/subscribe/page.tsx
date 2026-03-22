@@ -25,6 +25,7 @@ const TIERS = [
     id: 'basic', emoji: '🌱', name: 'Daily Seed',
     schedule: 'Monday & Friday mornings',
     monthly: '$29.99/mo', annual: '$299.90/yr',
+    callsMonthly: '~9 calls/month', callsAnnual: '104 calls/year',
     promise: 'Plant the seed. Watch your reality shift.',
     color: '#7cb87c',
   },
@@ -32,6 +33,7 @@ const TIERS = [
     id: 'standard', emoji: '🌿', name: 'Daily Growth',
     schedule: 'Every day in the morning',
     monthly: '$49.99/mo', annual: '$499.90/yr',
+    callsMonthly: '~30 calls/month', callsAnnual: '365 calls/year',
     promise: 'Your Bugatti is closer than you think.',
     color: '#d4a843', featured: true,
   },
@@ -39,6 +41,7 @@ const TIERS = [
     id: 'premium', emoji: '🔥', name: 'Daily Transformation',
     schedule: 'Every day · Morning & Evening',
     monthly: '$79.99/mo', annual: '$799.90/yr',
+    callsMonthly: '~60 calls/month', callsAnnual: '730 calls/year',
     promise: 'Maximum manifestation. Universe on full power.',
     color: '#c0a0ff',
   },
@@ -127,6 +130,7 @@ function SubscribeForm() {
                   <div>
                     <div style={{ fontWeight: 600, color: form.tier === tier.id ? tier.color : '#fff', fontSize: '0.95rem' }}>{tier.name}</div>
                     <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.75rem' }}>📞 {tier.schedule}</div>
+                    <div style={{ color: tier.color, fontSize: '0.75rem', fontWeight: 600, marginTop: '0.2rem' }}>{billing === 'annual' ? tier.callsAnnual : tier.callsMonthly}</div>
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>

@@ -25,7 +25,10 @@ const tiers = [
     annualNote: '2 months free',
     promise: 'Plant the seed. Watch your reality shift.',
     color: '#7cb87c',
-    features: ['Call from the universe every Monday & Friday morning', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice'],
+    // Mon + Fri = 2×/week → 52×2=104/yr, 104/12≈9/mo
+    callsMonthly: '~9 calls/month',
+    callsAnnual: '104 calls/year',
+    features: ['Call from the universe every Monday & Friday morning', 'Choose your call time', 'Gentle female AI voice'],
     cta: 'Start Manifesting',
   },
   {
@@ -39,7 +42,10 @@ const tiers = [
     promise: 'Your Bugatti is closer than you think.',
     color: '#d4a843',
     featured: true,
-    features: ['Call from the universe every morning', 'Choose your call time', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
+    // 1×/day → 30/mo, 365/yr
+    callsMonthly: '~30 calls/month',
+    callsAnnual: '365 calls/year',
+    features: ['Call from the universe every morning', 'Choose your call time', 'Gentle female AI voice', 'Morning abundance activation', 'Priority call delivery'],
     cta: 'Manifest Faster',
   },
   {
@@ -52,7 +58,10 @@ const tiers = [
     annualNote: '2 months free',
     promise: 'Maximum manifestation. Universe on full power.',
     color: '#c0a0ff',
-    features: ['2 calls from the universe per day', 'Morning + evening manifestation', '365 unique wisdom drops', 'Gentle female AI voice', 'Morning & evening abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
+    // 2×/day → 60/mo, 730/yr
+    callsMonthly: '~60 calls/month',
+    callsAnnual: '730 calls/year',
+    features: ['2 calls from the universe per day', 'Morning + evening manifestation', 'Gentle female AI voice', 'Morning & evening abundance activation', 'Priority call delivery', 'Deep manifestation sequences', 'Full life surrender protocol'],
     cta: 'Unlock Everything',
   },
 ]
@@ -182,6 +191,10 @@ export default function Home() {
                 <p style={{ color: tier.color, fontSize: '0.85rem', fontWeight: 600, lineHeight: 1.4 }}>{tier.promise}</p>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', textAlign: 'left' }}>
+                <li style={{ padding: '0.4rem 0', fontSize: '0.88rem', display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
+                  <span style={{ color: tier.color, marginTop: 2 }}>✓</span>
+                  <span style={{ color: tier.color, fontWeight: 600 }}>{billing === 'annual' ? tier.callsAnnual : tier.callsMonthly}</span>
+                </li>
                 {tier.features.map((f, i) => (
                   <li key={i} style={{ padding: '0.4rem 0', color: 'rgba(255,255,255,0.75)', fontSize: '0.88rem', display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
                     <span style={{ color: tier.color, marginTop: 2 }}>✓</span> {f}
